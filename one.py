@@ -8,9 +8,9 @@ from d9t.json import parser
 from flask_restful import Resource, Api
 app = Flask(__name__)
 api = Api(app)
-
-
-
+MONGO_URI = 'mongodb://amnox:aMNOX123BITCH@ds153835.mlab.com:53835/heroku_w6n26w98'
+client=(pymongo.MongoClient(MONGO_URI))
+mc=client.get_default_database()
 logging.basicConfig(level=logging.DEBUG,
                     format='(%(threadName)-10s) %(message)s',
                     )
@@ -25,9 +25,9 @@ class HelloWorld(Resource):
         stuff=[]
         class counter(object):
             def __init__(self):
-                self.MONGO_URI = 'mongodb://amnox:aMNOX123BITCH@ds153835.mlab.com:53835/heroku_w6n26w98'
+                
                 self.lock=threading.Lock()
-                self.amnoxDB=(pymongo.MongoClient(self.MONGO_URI)).get_default_database()
+                self.amnoxDB=mc
                 self.the_json_list=[]
                 self.count_json_var=0
             def make_json(self,list):
@@ -148,8 +148,6 @@ class HelloWorld(Resource):
             def ninth(self,keyword):
         
                 cc=self.amnoxDB.top_pages_dict.find()
-                cd=self.amnoxDB.music_eng_dict.find()
-                ce=self.amnoxDB.music_hin_dict.find()
                 cf=self.amnoxDB.book_dict.find()
                 cg=self.amnoxDB.movies_eng_dict.find()
                 ch=self.amnoxDB.movies_hin_dict.find()
@@ -260,6 +258,7 @@ class HelloWorld(Resource):
             t.start()
             threads.append(t)
         for t in threads:
+            print 'im on one'
             t.join()
         print time.clock() - start
         aa=json.dumps(this_guy.the_json_list, default=lambda o: o.__dict__)
@@ -268,4 +267,5 @@ class HelloWorld(Resource):
 api.add_resource(HelloWorld, '/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
