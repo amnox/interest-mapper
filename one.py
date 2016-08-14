@@ -3,14 +3,14 @@ import logging,random,threading,time
 import os
 import re
 import pickle,json
-from pymongo import MongoClient
+import pymongo
 from d9t.json import parser
 from flask_restful import Resource, Api
 app = Flask(__name__)
 api = Api(app)
 
-MONGO_URL = os.environ.get('MONGO_URL')
-app.config['MONGO_URI'] = MONGO_URL
+
+
 logging.basicConfig(level=logging.DEBUG,
                     format='(%(threadName)-10s) %(message)s',
                     )
@@ -25,8 +25,9 @@ class HelloWorld(Resource):
         stuff=[]
         class counter(object):
             def __init__(self):
+                self.MONGO_URI = 'mongodb://amnox:aMNOX123BITCH@ds153835.mlab.com:53835/heroku_w6n26w98'
                 self.lock=threading.Lock()
-                self.amnoxDB=MongoClient(app).dictionary
+                self.amnoxDB=(pymongo.MongoClient(self.MONGO_URI)).get_default_database()
                 self.the_json_list=[]
                 self.count_json_var=0
             def make_json(self,list):
