@@ -16,7 +16,8 @@ logging.basicConfig(level=logging.DEBUG,
                     )
 class HelloWorld(Resource):
 
-        
+    def get(self):
+        return "post array of likes object with fields [{'name':<>,'category':<>,'about':<>,'description':<>,'genre':<>}] \n limit array size to 10!!"
     def post(self):
         
         stuff=[]
