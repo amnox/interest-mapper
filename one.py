@@ -15,10 +15,7 @@ logging.basicConfig(level=logging.DEBUG,
                     format='(%(threadName)-10s) %(message)s',
                     )
 class HelloWorld(Resource):
-    def get(self):
-        with open('C:\\New folder\\new_likes\\Anuj_Likes.json') as data_file:
-            data = json.load(data_file)
-        return data
+
         
     def post(self):
         
