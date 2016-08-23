@@ -33,7 +33,7 @@ class HelloWorld(Resource):
         
         
             def first(self,keyword):
-                cc=self.amnoxDB.book_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
+                cc=self.amnoxDB.book_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
                 self.lock.acquire()
                 for shit in cc:
             
@@ -46,7 +46,7 @@ class HelloWorld(Resource):
                 self.lock.release()
             def second(self,keyword):
         
-                cc=self.amnoxDB.college_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
+                cc=self.amnoxDB.college_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
                 self.lock.acquire()
                 for shit in cc:
             
@@ -59,7 +59,7 @@ class HelloWorld(Resource):
                 self.lock.release()
             def third(self,keyword):
         
-                cc=self.amnoxDB.cricket_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
+                cc=self.amnoxDB.cricket_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
                 self.lock.acquire()
                 for shit in cc:
             
@@ -72,7 +72,7 @@ class HelloWorld(Resource):
                 self.lock.release()
             def fourth(self,keyword):
         
-                cc=self.amnoxDB.football_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
+                cc=self.amnoxDB.football_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
                 self.lock.acquire()
                 for shit in cc:
             
@@ -85,7 +85,7 @@ class HelloWorld(Resource):
                 self.lock.release()
             def fifth(self,keyword):
         
-                cc=self.amnoxDB.movies_eng_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
+                cc=self.amnoxDB.movies_eng_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
                 self.lock.acquire()
                 for shit in cc:
             
@@ -98,7 +98,7 @@ class HelloWorld(Resource):
                 self.lock.release()
             def sixth(self,keyword):
         
-                cc=self.amnoxDB.movies_hin_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
+                cc=self.amnoxDB.movies_hin_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
                 self.lock.acquire()
                 for shit in cc:
             
@@ -110,7 +110,7 @@ class HelloWorld(Resource):
                 self.lock.release()
             def seventh(self,keyword):
         
-                cc=self.amnoxDB.top_pages_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
+                cc=self.amnoxDB.top_pages_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
                 self.lock.acquire()
                 for shit in cc:
             
@@ -122,8 +122,8 @@ class HelloWorld(Resource):
                 self.lock.release()
             def eighth(self,keyword):
         
-                cc=self.amnoxDB.tv_series_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
-                cd=self.amnoxDB.top_pages_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
+                cc=self.amnoxDB.tv_series_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
+                cd=self.amnoxDB.top_pages_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
                 self.lock.acquire()
                 for shit in cc:
             
@@ -145,10 +145,10 @@ class HelloWorld(Resource):
                 self.lock.release()
             def ninth(self,keyword):
         
-                cc=self.amnoxDB.top_pages_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
-                cf=self.amnoxDB.book_dict.find({'author': re.compile(keyword, re.IGNORECASE)})
-                cg=self.amnoxDB.movies_eng_dict.find({'actors': re.compile(keyword, re.IGNORECASE)})
-                ch=self.amnoxDB.movies_hin_dict.find({'actors': re.compile(keyword, re.IGNORECASE)})
+                cc=self.amnoxDB.top_pages_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
+                cf=self.amnoxDB.book_dict.find({'author': re.compile(keyword[0], re.IGNORECASE)})
+                cg=self.amnoxDB.movies_eng_dict.find({'actors': re.compile(keyword[0], re.IGNORECASE)})
+                ch=self.amnoxDB.movies_hin_dict.find({'actors': re.compile(keyword[0], re.IGNORECASE)})
                 self.lock.acquire()
                 if 'public figure' in keyword[1]:
                     for shit in cc:
@@ -195,7 +195,7 @@ class HelloWorld(Resource):
                     self.make_json([[keyword[0]],[keyword[1]],['People']])
                 self.lock.release()
             def tenth(self,keyword):
-                cc=self.amnoxDB.top_pages_dict.find({'name': re.compile(keyword, re.IGNORECASE)})
+                cc=self.amnoxDB.top_pages_dict.find({'name': re.compile(keyword[0], re.IGNORECASE)})
                 self.lock.acquire()
                 for shit in cc:
                     for shits in shit['name']:
